@@ -1273,6 +1273,26 @@ MonoBehaviour:
   BingoPanel: {fileID: 1594571369}
   col: 3
   row: 3
+<<<<<<< HEAD
+=======
+--- !u!114 &1594571375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1594571369}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa899f34020fbf4e9c23c4a48245819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainPanel: {fileID: 473195567}
+  BingoPanel: {fileID: 1594571369}
+  iP: {fileID: 2089906217}
+  buttonPrefab: {fileID: 114082426229185092, guid: fba2bb2583bac4b43b0f20f3d6fd269e,
+    type: 2}
+  panel: {fileID: 1594571370}
+>>>>>>> 1bced53... whoops
 --- !u!1 &1655757276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,6 +1450,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iP: {fileID: 2089906217}
+<<<<<<< HEAD
+=======
+--- !u!114 &1655757282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1655757276}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa899f34020fbf4e9c23c4a48245819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainPanel: {fileID: 0}
+  BingoPanel: {fileID: 0}
+  iP: {fileID: 0}
+  buttonPrefab: {fileID: 0}
+  panel: {fileID: 0}
+>>>>>>> 1bced53... whoops
 --- !u!1 &1684959050
 GameObject:
   m_ObjectHideFlags: 0
