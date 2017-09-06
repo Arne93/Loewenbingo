@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class saveScript : MonoBehaviour {
     public InputField iP;
     string ipText;
-    List<string> copy = initializeButtons.bingoList;
+    List<string> copy;// = initializeButtons.bingoList;
 	// Use this for initialization
 	void Start () {
-
+        copy = ListContainer.bingoList;
 	}
 
 
