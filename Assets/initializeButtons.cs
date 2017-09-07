@@ -105,24 +105,41 @@ using UnityEngine.UI;
 "Giselotte",
 
  };
-        public static List<string> bingoList = new List<string> { "Löwe erzählt aus seinem Leben", "Löwen investieren als Team", "Gründer weint", "Altes Produkt wird gezeigt", "Backstage-Mitarbeiter ist unangenehm", "Aus dem Grund bin ich raus", "Es ist nicht Franks Welt/DNA", "Marge zu gering", "Produkt hat gute Qualität", "Produkt hat Potenzial", "Ich bin Ihr Kunde, aber nicht ihr Investor", "An die Hand nehmen", "Sie sind mir sympathisch", "Dümmel kauft 2x hintereinander", "Essbares Produkts ist vegan", "Nische", "25,1%", "Unter 50.000€ Umsatz", "Ein Löwe testet", "Models stellen vor" };
+        public static List<string> bingoList = new List<string> { "Löwe erzählt aus seinem Leben",
+            "Löwen investieren als Team",
+            "Gründer weint",
+            "Altes Produkt wird gezeigt",
+            "Backstage-Mitarbeiter ist unangenehm",
+            "Aus dem Grund bin ich raus",
+            "Es ist nicht Franks Welt/DNA",
+            "Marge zu gering",
+            "Produkt hat gute Qualität",
+            "Produkt hat Potenzial",
+            "Ich bin Ihr Kunde, aber nicht ihr Investor",
+            "An die Hand nehmen",
+            "Sie sind mir sympathisch",
+            "Dümmel kauft 2x hintereinander",
+            "Essbares Produkts ist vegan",
+            "Nische",
+            "25,1%",
+            "Unter 50.000€ Umsatz",
+            "Ein Löwe testet",
+            "Models stellen vor"
+        };
     }
 
 
-
 public class initializeButtons : MonoBehaviour {
+    public static readonly int BOARD_SIZE = 9;
     public GameObject MainPanel;
     public GameObject BingoPanel;
     public InputField iP;
     public Button buttonPrefab;
     public Transform panel;
-    //bool isButtonClicked = false;
     public Dictionary<Button, bool> clickedButtons = new Dictionary<Button,bool>();
     Color defaultColor;
-    //public List<string> bingoList;// new List<string> {"Löwe erzählt aus seinem Leben","Löwen investieren als Team","Gründer weint","Altes Produkt wird gezeigt","Backstage-Mitarbeiter ist unangenehm","Aus dem Grund bin ich raus","Es ist nicht Franks Welt/DNA","Marge zu gering","Produkt hat gute Qualität", "Produkt hat Potenzial","Ich bin Ihr Kunde, aber nicht ihr Investor", "An die Hand nehmen", "Sie sind mir sympathisch", "Dümmel kauft 2x hintereinander", "Essbares Produkts ist vegan", "Nische", "25,1%", "Unter 50.000€ Umsatz", "Ein Löwe testet", "Models stellen vor" };
-    public static List<Button> buttonList = new List<Button>();
-   // public List<string> nameList; 
-    public static bool reInit = false;
+    public List<Button> playerButtons;
+    private bool initialized = false;
 
 
 
@@ -130,46 +147,48 @@ public class initializeButtons : MonoBehaviour {
     // Use this for initialization
     public void Start()
     {
-        //nameList = ListContainer.nameList;
-        //bingoList = ListContainer.bingoList;
         int randomName = Random.Range(0, ListContainer.nameList.Count);
         iP.text = ListContainer.nameList[randomName];
         int n = ListContainer.bingoList.Count;
         defaultColor = buttonPrefab.GetComponent<Image>().color;
+        List<string> copyList = new List<string>(ListContainer.bingoList);
         while (n > 1)
         {
             int k = (Random.Range(0, n) % n);
             n--;
-            string value = ListContainer.bingoList[k];
-            ListContainer.bingoList[k] = ListContainer.bingoList[n];
-            ListContainer.bingoList[n] = value;
+            string value = copyList[k];
+            copyList[k] = copyList[n];
+            copyList[n] = value;
 
             
         }
-        Initialize();
+        Initialize(copyList);
     }
 	
 	
-	void Initialize () {
-        for (int i = 0; i < 9; i++)
+	void Initialize (List<string> copyList) {
+        playerButtons = new List<Button>();
+        for (int i = 0; i < BOARD_SIZE; i++)
         {
-            Debug.Log("button " + i + " has text " + ListContainer.bingoList[i]);
+            Debug.Log("button " + i + " has text " + copyList[i]);
             Button button = Instantiate(buttonPrefab);
-            button.GetComponentInChildren<Text>().text = ListContainer.bingoList[i];
+            button.GetComponentInChildren<Text>().text = copyList[i];
             button.GetComponentInChildren<Text>().resizeTextForBestFit = true;
             button.transform.parent = panel;
             button.onClick.AddListener(() => { TaskOnClick(button); });
 
-            buttonList.Add(button);
+            playerButtons.Add(button);
             clickedButtons.Add(button, false);
         }
+        //unlock
+        initialized = true;
     }
 
-    void rename()
+    void Rename()
     {
         for(int i = 0; i < 9; i++)
         {
-            Button b = (Button)buttonList[i];
+            Button b = playerButtons[i];
             b.GetComponentInChildren<Text>().text = ListContainer.bingoList[i];
         }
     }
@@ -179,35 +198,112 @@ public class initializeButtons : MonoBehaviour {
 
         if (!clickedButtons[b])
         {
-            b.GetComponent<Image>().color = Color.green;
             clickedButtons[b] = true;
         }
         else
         {
-            b.GetComponent<Image>().color = defaultColor;
             clickedButtons[b] = false;
         }
     }
 
     public void SavePlayerProfile()
     {
-        for (int i = 0; i < ListContainer.bingoList.Count; i++)
+        for (int i = 0; i < BOARD_SIZE; i++)
         {
-            PlayerPrefs.SetString(iP.text + i, ListContainer.bingoList[i]); //key: ipText0-i, value: copy[i]
+            int idx = -1;
+            // find the index of each button, idx is the index in ListContainer.bingoList
+            for(int j = 0; j < ListContainer.bingoList.Count; j++)
+            {
+                if (ListContainer.bingoList[j].Equals(playerButtons[i].GetComponentInChildren<Text>().text)){
+                    idx = j;
+                    break;
+                }
+            }
+            //should not happen!
+            if(idx == -1)
+            {
+                Debug.Log("idx -1, theres something wrong!");
+            }
+            //save the buttons
+            PlayerPrefs.SetInt(iP.text + i, idx); 
             Debug.Log(PlayerPrefs.GetString(iP.text + i));
+
+            //save which button has been pressed
+            Button b = playerButtons[i];
+            PlayerPrefs.SetInt(iP.text + i + "pressed", System.Convert.ToInt32(clickedButtons[b]));
         }
         PlayerPrefs.Save(); 
     }
 
+    public void ReInit()
+    {
+        
+        clickedButtons=new Dictionary<Button, bool>();
+        int randomName = Random.Range(0, ListContainer.nameList.Count);
+        iP.text = ListContainer.nameList[randomName];
+        int n = ListContainer.bingoList.Count;
+        defaultColor = buttonPrefab.GetComponent<Image>().color;
+        List<string> copyList = new List<string>(ListContainer.bingoList);
+        while (n > 1)
+        {
+            int k = (Random.Range(0, n) % n);
+            n--;
+            string value = copyList[k];
+            copyList[k] = copyList[n];
+            copyList[n] = value;
 
-   
+
+        }
+        for(int i = 0; i < BOARD_SIZE; i++)
+        {
+            Button b = playerButtons[i];
+            b.GetComponentInChildren<Text>().text = copyList[i];
+            clickedButtons[b] = false;
+        }
+        initialized = true;
+    }
+
+    public void LoadPlayerProfile()
+    {
+        if (PlayerPrefs.HasKey(iP.text + "0")) 
+        {
+            for (int i = 0; i < BOARD_SIZE; i++) 
+            {
+            // load index in ListContainer.bingoLis
+          
+                int idx = PlayerPrefs.GetInt(iP.text + i);
+                Debug.Log("index: " + idx);
+
+                Button b = playerButtons[i];
+                Text caption = b.GetComponentInChildren<Text>();
+                caption.text = ListContainer.bingoList[idx];
+                int clicked = PlayerPrefs.GetInt(iP.text + i + "pressed");
+                clickedButtons[b] = clicked == 0 ? false : true;
+            }
+            return;
+        }
+        // lock
+        initialized = false;
+        Debug.Log("no savegame found! Starting new game");
+        ReInit();
+    }
+
+
+
     // Update is called once per frame
     void Update()
     {
-        if (reInit)
+        if (initialized)
         {
-            rename();
-            reInit = false;
+            // check for each button if pressed
+            for (int i = 0; i < BOARD_SIZE; i++)
+            {
+                Button b = playerButtons[i];
+                if (clickedButtons[b])
+                    b.GetComponent<Image>().color = Color.green;
+                else
+                    b.GetComponent<Image>().color = defaultColor;
+            }
         }
     }
 }

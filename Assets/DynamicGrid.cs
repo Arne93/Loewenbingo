@@ -52,6 +52,15 @@ public class DynamicGrid : MonoBehaviour
             }
         }
         
+        if(Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.LinuxPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                MainPanel.SetActive(true);
+                BingoPanel.SetActive(false);
+                return;
+            }
+        }
 
 
     }

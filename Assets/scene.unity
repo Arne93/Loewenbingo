@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 28298488}
   - component: {fileID: 28298490}
   - component: {fileID: 28298489}
+  - component: {fileID: 28298491}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -182,6 +183,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 28298487}
+--- !u!114 &28298491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 28298487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa899f34020fbf4e9c23c4a48245819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainPanel: {fileID: 0}
+  BingoPanel: {fileID: 0}
+  iP: {fileID: 0}
+  buttonPrefab: {fileID: 0}
+  panel: {fileID: 0}
+  playerButtons: []
 --- !u!1 &213859591
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +751,6 @@ GameObject:
   - component: {fileID: 1068807699}
   - component: {fileID: 1068807698}
   - component: {fileID: 1068807697}
-  - component: {fileID: 1068807700}
   m_Layer: 5
   m_Name: SaveButton
   m_TagString: Untagged
@@ -799,30 +816,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1594571369}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 473195567}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1068807700}
-        m_MethodName: safePlayerPrefs
+      - m_Target: {fileID: 1931530419}
+        m_MethodName: SavePlayerProfile
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -867,18 +862,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1068807695}
---- !u!114 &1068807700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1068807695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 115a0c10cd4ee0e4386ed96c9db2322c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iP: {fileID: 2089906217}
 --- !u!1 &1232757906
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,7 +1265,6 @@ GameObject:
   - component: {fileID: 1655757280}
   - component: {fileID: 1655757279}
   - component: {fileID: 1655757278}
-  - component: {fileID: 1655757281}
   m_Layer: 5
   m_Name: LoadButton
   m_TagString: Untagged
@@ -1370,8 +1352,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1655757281}
-        m_MethodName: loadPlayerPrefs
+      - m_Target: {fileID: 1931530419}
+        m_MethodName: LoadPlayerProfile
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1416,18 +1398,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1655757276}
---- !u!114 &1655757281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1655757276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cf4a86ccb07b674bacd22ee7981968e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iP: {fileID: 2089906217}
 --- !u!1 &1684959050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,6 +1659,7 @@ MonoBehaviour:
   buttonPrefab: {fileID: 114082426229185092, guid: fba2bb2583bac4b43b0f20f3d6fd269e,
     type: 2}
   panel: {fileID: 1594571370}
+  playerButtons: []
 --- !u!1 &2089906215
 GameObject:
   m_ObjectHideFlags: 0
