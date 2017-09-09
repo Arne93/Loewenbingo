@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
     public class ListContainer
     {
-        public static List<string> nameList = new List<string> {"Fynn",
+        public static List<string> nameList = new List<string> {
+"Fynn",
 "Fiete",
 "Jan",
 "Arvid",
@@ -82,7 +83,6 @@ using UnityEngine.UI;
 "Melina",
 "Mercedes",
 "Karina",
-"Hortensia-Pia",
 "Maja",
 "Ina",
 "Marie-Luise",
@@ -105,12 +105,13 @@ using UnityEngine.UI;
 "Giselotte",
 
  };
-        public static List<string> bingoList = new List<string> { "Löwe erzählt aus seinem Leben",
+    public static List<string> bingoList = new List<string> {
+            "Löwe erzählt aus seinem Leben",
             "Löwen investieren als Team",
             "Gründer weint",
             "Altes Produkt wird gezeigt",
             "Backstage-Mitarbeiter ist unangenehm",
-            "Aus dem Grund bin ich raus",
+            "Aus den genannten Gründen bin ich raus",
             "Es ist nicht Franks Welt/DNA",
             "Marge zu gering",
             "Produkt hat gute Qualität",
@@ -124,7 +125,11 @@ using UnityEngine.UI;
             "25,1%",
             "Unter 50.000€ Umsatz",
             "Ein Löwe testet",
-            "Models stellen vor"
+            "Models stellen vor",
+            "Gründer sind Familienunternehmen",
+            "Bewertung zu hoch",
+            "Ich als ..., weiß was harte Arbeit ist"
+
         };
     }
 
