@@ -232,7 +232,12 @@ public class initializeButtons : MonoBehaviour {
             Button b = playerButtons[i];
             PlayerPrefs.SetInt(iP.text + i + "pressed", System.Convert.ToInt32(clickedButtons[b]));
         }
-        PlayerPrefs.Save(); 
+        PlayerPrefs.Save();
+
+        //set load button caption to "load"
+        var mainPanel = GameObject.Find("MainPanel");
+        var x = (LoadButtonCaptionHandler)mainPanel.GetComponent(typeof(LoadButtonCaptionHandler));
+        x.ValueChanged();
     }
 
     public void ReInit()

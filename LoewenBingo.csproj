@@ -81,6 +81,7 @@
     <Compile Include="Assets\DynamicGrid.cs" />
     <Compile Include="Assets\exitScript.cs" />
     <Compile Include="Assets\initializeButtons.cs" />
+    <Compile Include="Assets\LoadButtonCaptionHandler.cs" />
     <Compile Include="Assets\resetScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

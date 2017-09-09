@@ -47,7 +47,10 @@ public class DynamicGrid : MonoBehaviour
             {
                 MainPanel.SetActive(true);
                 BingoPanel.SetActive(false);
-                //save bingo fields
+                // set load button caption
+                var mainPanel = GameObject.Find("MainPanel");
+                var x = (LoadButtonCaptionHandler)mainPanel.GetComponent(typeof(LoadButtonCaptionHandler));
+                x.ValueChanged();
                 return;
             }
         }
@@ -56,8 +59,13 @@ public class DynamicGrid : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
+
                 MainPanel.SetActive(true);
                 BingoPanel.SetActive(false);
+                // set load button caption
+                var mainPanel = GameObject.Find("MainPanel");
+                var x = (LoadButtonCaptionHandler)mainPanel.GetComponent(typeof(LoadButtonCaptionHandler));
+                x.ValueChanged();
                 return;
             }
         }

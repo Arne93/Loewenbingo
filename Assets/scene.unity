@@ -434,6 +434,7 @@ GameObject:
   - component: {fileID: 473195571}
   - component: {fileID: 473195570}
   - component: {fileID: 473195569}
+  - component: {fileID: 473195572}
   m_Layer: 5
   m_Name: MainPanel
   m_TagString: Untagged
@@ -520,6 +521,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 473195567}
+--- !u!114 &473195572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 473195567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f160cee3bf041649941f7cd40394b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadButton: {fileID: 1655757278}
+  iP: {fileID: 2089906217}
 --- !u!1 &770283630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,7 +1479,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Laden
+  m_Text: Neues Spiel
 --- !u!222 &1684959053
 CanvasRenderer:
   m_ObjectHideFlags: 0
