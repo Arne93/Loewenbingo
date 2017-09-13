@@ -28,8 +28,8 @@ public class DynamicGrid : MonoBehaviour
 		Debug.Log (parent.transform.localScale);
 		Debug.Log (parent.rect.width / col);
 
-		grid.cellSize = new Vector2(parent.rect.width / col, parent.rect.height / row);
-
+	//	grid.cellSize = new Vector2(parent.rect.width / col, parent.rect.height / row);
+		grid.cellSize = new Vector2(Screen.width/(float)col, Screen.height/(float)row);
 	//	grid.cellSize = new Vector2(10.333f,10.333f);
 
 
@@ -45,9 +45,9 @@ public class DynamicGrid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		/* needed if the screen aspect ratio changes, should not happen normally */
-		GridLayoutGroup grid = BingoPanel.GetComponent<GridLayoutGroup> ();
-		grid.cellSize = new Vector2(Screen.width/(float)col, Screen.height/(float)row);
+		/* needed if the screen aspect ratio changes, should not happen normally. (poor garbage collection) */
+//		GridLayoutGroup grid = BingoPanel.GetComponent<GridLayoutGroup> ();
+//		grid.cellSize = new Vector2(Screen.width/(float)col, Screen.height/(float)row);
         if (Application.platform == RuntimePlatform.Android)
         {
             if (Input.GetKey(KeyCode.Escape))
