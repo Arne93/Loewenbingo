@@ -160,12 +160,12 @@ public class initializeButtons : MonoBehaviour {
             copyList[k] = copyList[n];
             copyList[n] = value;
 
-            
+
         }
         Initialize(copyList);
     }
-	
-	
+
+
 	void Initialize (List<string> copyList) {
         playerButtons = new List<Button>();
         for (int i = 0; i < BOARD_SIZE; i++)
@@ -174,7 +174,8 @@ public class initializeButtons : MonoBehaviour {
             Button button = Instantiate(buttonPrefab);
             button.GetComponentInChildren<Text>().text = copyList[i];
             button.GetComponentInChildren<Text>().resizeTextForBestFit = true;
-            button.transform.parent = panel;
+			button.transform.SetParent(BingoPanel.transform);
+			button.transform.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
             button.onClick.AddListener(() => { TaskOnClick(button); });
 
             playerButtons.Add(button);
@@ -225,19 +226,24 @@ public class initializeButtons : MonoBehaviour {
                 Debug.Log("idx -1, theres something wrong!");
             }
             //save the buttons
-            PlayerPrefs.SetInt(iP.text + i, idx); 
+            PlayerPrefs.SetInt(iP.text + i, idx);
             Debug.Log(PlayerPrefs.GetString(iP.text + i));
 
             //save which button has been pressed
             Button b = playerButtons[i];
             PlayerPrefs.SetInt(iP.text + i + "pressed", System.Convert.ToInt32(clickedButtons[b]));
         }
-        PlayerPrefs.Save(); 
+        PlayerPrefs.Save();
+
+        //set load button caption to "load"
+        var mainPanel = GameObject.Find("MainPanel");
+        var x = (LoadButtonCaptionHandler)mainPanel.GetComponent(typeof(LoadButtonCaptionHandler));
+        x.ValueChanged();
     }
 
     public void ReInit()
     {
-        
+
         clickedButtons=new Dictionary<Button, bool>();
         int randomName = Random.Range(0, ListContainer.nameList.Count);
         iP.text = ListContainer.nameList[randomName];
@@ -265,12 +271,12 @@ public class initializeButtons : MonoBehaviour {
 
     public void LoadPlayerProfile()
     {
-        if (PlayerPrefs.HasKey(iP.text + "0")) 
+        if (PlayerPrefs.HasKey(iP.text + "0"))
         {
-            for (int i = 0; i < BOARD_SIZE; i++) 
+            for (int i = 0; i < BOARD_SIZE; i++)
             {
             // load index in ListContainer.bingoLis
-          
+
                 int idx = PlayerPrefs.GetInt(iP.text + i);
                 Debug.Log("index: " + idx);
 
