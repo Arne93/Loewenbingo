@@ -9,6 +9,7 @@ public class DynamicGrid : MonoBehaviour
 	public GameObject Canvas;
     public GameObject MainPanel;
     public GameObject BingoPanel;
+	public GameObject FireworksPanel;
 
     public int col, row;
 
@@ -45,6 +46,7 @@ public class DynamicGrid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		
 		/* needed if the screen aspect ratio changes, should not happen normally. (poor garbage collection) */
 //		GridLayoutGroup grid = BingoPanel.GetComponent<GridLayoutGroup> ();
 //		grid.cellSize = new Vector2(Screen.width/(float)col, Screen.height/(float)row);
@@ -54,6 +56,7 @@ public class DynamicGrid : MonoBehaviour
             {
                 MainPanel.SetActive(true);
                 BingoPanel.SetActive(false);
+				FireworksPanel.SetActive (false);
                 // set load button caption
                 var mainPanel = GameObject.Find("MainPanel");
                 var x = (LoadButtonCaptionHandler)mainPanel.GetComponent(typeof(LoadButtonCaptionHandler));
@@ -71,6 +74,7 @@ public class DynamicGrid : MonoBehaviour
 
                 MainPanel.SetActive(true);
                 BingoPanel.SetActive(false);
+				FireworksPanel.SetActive(false);
                 // set load button caption
                 var mainPanel = GameObject.Find("MainPanel");
                 var x = (LoadButtonCaptionHandler)mainPanel.GetComponent(typeof(LoadButtonCaptionHandler));
