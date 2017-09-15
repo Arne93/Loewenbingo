@@ -144,7 +144,6 @@ public class initializeButtons : MonoBehaviour {
 	public bool gameWon = false;
 	public GameObject FireworksPanel;
 	public GameObject Explosion;
-	private float timeLeft = 2.0f;
 
 
 
@@ -376,21 +375,25 @@ public class initializeButtons : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-		if (initialized)
-        {
-            // check for each button if pressed
-            for (int i = 0; i < BOARD_SIZE; i++)
+        if (BingoPanel.activeSelf && !FireworksPanel.activeSelf)
+        {   
+            if (initialized)
             {
-                Button b = playerButtons[i];
-                if (clickedButtons[b]==1)
-                    b.GetComponent<Image>().color = Color.green;
-                else
-                    b.GetComponent<Image>().color = defaultColor;
+                // check for each button if pressed
+                for (int i = 0; i < BOARD_SIZE; i++)
+                {
+                    Button b = playerButtons[i];
+                    if (clickedButtons[b] == 1)
+                        b.GetComponent<Image>().color = Color.green;
+                    else
+                        b.GetComponent<Image>().color = defaultColor;
+                }
+            }
+            if (!gameWon)
+            {
+                CheckForWin();
             }
         }
-		if (!gameWon) {
-			CheckForWin ();
-		}
 
     }
 }
