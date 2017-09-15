@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Timers;
+using System.Runtime.Remoting.Channels;
 
     public class ListContainer
     {
@@ -106,12 +107,13 @@ using System.Timers;
 "Giselotte",
 
  };
-        public static List<string> bingoList = new List<string> { "Löwe erzählt aus seinem Leben",
+        public static List<string> bingoList = new List<string> {
+            "Löwe erzählt aus seinem Leben",
             "Löwen investieren als Team",
             "Gründer weint",
             "Altes Produkt wird gezeigt",
             "Backstage-Mitarbeiter ist unangenehm",
-            "Aus dem Grund bin ich raus",
+            "Aus den genannten Gründen bin ich raus",
             "Es ist nicht Franks Welt/DNA",
             "Marge zu gering",
             "Produkt hat gute Qualität",
@@ -125,7 +127,12 @@ using System.Timers;
             "25,1%",
             "Unter 50.000€ Umsatz",
             "Ein Löwe testet",
-            "Models stellen vor"
+            "Models stellen vor",
+            "Gründer sind Familienunternehmen",
+            "Berwertung zu hoch",
+            "Ich als ..., weiß was harte Arbeit ist",
+            "Was ist euer USP?"
+
         };
     }
 
