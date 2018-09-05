@@ -26,8 +26,8 @@ public class DynamicGrid : MonoBehaviour
        // GridLayoutGroup grid = gameObject.GetComponent<GridLayoutGroup>();
 		GridLayoutGroup grid = BingoPanel.GetComponent<GridLayoutGroup> ();
 		RectTransform parent = Canvas.GetComponent<RectTransform> ();
-		Debug.Log (parent.transform.localScale);
-		Debug.Log (parent.rect.width / col);
+		//Debug.Log (parent.transform.localScale);
+		//Debug.Log (parent.rect.width / col);
 
 	//	grid.cellSize = new Vector2(parent.rect.width / col, parent.rect.height / row);
 		grid.cellSize = new Vector2(Screen.width/(float)col, Screen.height/(float)row);
