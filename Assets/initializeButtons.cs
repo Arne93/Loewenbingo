@@ -129,7 +129,7 @@ using System.Runtime.Remoting.Channels;
             "Ein Löwe testet",
             "Models stellen vor",
             "Gründer sind Familienunternehmen",
-            "Berwertung zu hoch",
+            "Bewertung zu hoch",
             "Ich als ..., weiß was harte Arbeit ist",
             "Was ist euer USP?",
             "Ich hab Bock das mit euch groß zu machen"
@@ -152,6 +152,7 @@ public class initializeButtons : MonoBehaviour {
 	public bool gameWon = false;
 	public GameObject FireworksPanel;
 	public GameObject Explosion;
+    public GameObject startButton;
 
 
 
